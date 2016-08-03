@@ -1,0 +1,156 @@
+<header class="expenseNav" ng-hide="formModal">
+    <div class="logo u-flex u-flexJustifyAround">
+        <h1>X</h1>
+
+        <h1>P</h1>
+
+        <h1>N</h1>
+
+        <h1>S</h1>
+    </div>
+    <div class="toggles u-flex u-flexRow u-flexJustifyAround">
+        <input type="submit" value="Add Exp" ng-click="showAddForm()" />
+        <input type="submit" value="Edit Exp" ng-click="showEditForm()" />
+        <input type="submit" value="Reimburse" ng-click="showReimburseForm()" />
+        <input type="submit" value="Delete" ng-click="showDeleteForm()" />
+    </div>
+</header>
+
+
+<div class="formStyle" ng-show="addFormModal">
+    <form name="addExpense" novalidate class="u-flex u-flexCol u-flexAlignItemsCenter">
+        <span>Merchant:</span> <input ng-model="newExpense.merchant" type="text" required>
+        <span>Total Cost:</span> <input ng-model="newExpense.expenseAmt" type="number" step="any" required>
+        <span>Date Purchased:</span> <input ng-model="newExpense.expenseDate" type="date" required>
+        <span>Comments:</span> <textarea ng-model="newExpense.comments" cols="40" rows="5"></textarea>
+        <input type="submit" value="Save" ng-click="saveExpense()"/>
+        <input type="submit" value="Cancel" ng-click="cancelExpense()"/>
+    </form>
+</div>
+
+<div class="formStyle" ng-show="editFields">
+    <form name="editExpense" novalidate class="u-flex u-flexCol u-flexAlignItemsCenter">
+        <span>Choose the expense you would like to edit: </span>
+        <select ng-options="expense.merchant for expense in newExpenses" ng-model="selected"></select>
+        <span>Merchant:</span> <input type="text" placeholder="" ng-model="selected.merchant" required/>
+        <span>Total Cost:</span> <input type="number" ng-model="selected.expenseAmt" required/>
+        <span>Date Purchased:</span> <input type="date" placeholder="" ng-model="selected.expenseDate" required/>
+        <span>Comments:</span> <textarea placeholder="" ng-model="selected.comments" cols="40" rows="5"></textarea>
+        <input type="submit" value="Save" ng-click="saveEdit()"/>
+        <input type="submit" value="Cancel" ng-click="cancelEdit()"/>
+    </form>
+</div>
+
+<div class="formStyle" ng-show="reimburseFields">
+    <form name="Reimburse" novalidate class="u-flex u-flexCol u-flexAlignItemsCenter">
+        <span>Choose the expense you would like to reimburse: </span>
+        <select ng-options="expense.merchant for expense in newExpenses" ng-model="selected"></select>
+        <br>
+        <input type="submit" value="Save" ng-click="reimburseExpense(selected.id)"/>
+        <input type="submit" value="Cancel" ng-click="cancelReimburse()"/>
+    </form>
+</div>
+
+<div class="formStyle" ng-show="removeFields">
+    <form name="Delete" novalidate class="u-flex u-flexCol u-flexAlignItemsCenter">
+        <span>Choose the expense you would like to delete: </span>
+        <select ng-options="expense.merchant for expense in newExpenses" ng-model="selected"></select>
+        <br>
+        <input type="submit" value="Save" ng-click="deleteExpense(selected.id)"/>
+        <input type="submit" value="Cancel" ng-click="cancelDelete()"/>
+    </form>
+</div>
+
+<div class="mainContainer u-flex u-flexCol u-flexAlignContentCenter">
+    <h5>New Expenses</h5> <br>
+
+    <div class="expenseLabels u-flex u-flexRow u-flexJustifyAround">
+
+        <div class="u-flex u-flexJustifyCenter u-flexGrow1">Merchant</div>
+        <hr>
+        <div class="u-flex u-flexJustifyCenter u-flexGrow1">Amount</div>
+        <hr>
+        <div class="u-flex u-flexJustifyCenter u-flexGrow1">Date</div>
+        <hr>
+        <div class="u-flex u-flexJustifyCenter u-flexGrow1">Comments</div>
+    </div>
+
+    <div class="expenseSection" ng-repeat="expense in newExpenses | orderBy:'':true">
+        <div class="u-flex u-flexJustifyAround" ng-class-odd="'odd'" ng-class-even="'even'">
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{expense.merchant}}</p>
+
+            </div>
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{expense.expenseAmt | number: 2}}</p>
+
+            </div>
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{expense.expenseDate | date }}</p>
+
+            </div>
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{expense.comments}}</p>
+
+            </div>
+
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <h5>Reimbursed</h5> <br>
+
+    <div class="reimbursedLabels u-flex u-flexCol">
+
+        <div class="u-flex u-flexRow u-flexJustifyAround">
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">Merchant</div>
+            <hr>
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">Amount</div>
+            <hr>
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">Date</div>
+            <hr>
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">Comments</div>
+        </div>
+    </div>
+
+    <div class="expenseSection" ng-repeat="reimbursed in reimbursedExpenses | orderBy:'':true">
+        <div class="u-flex u-flexJustifyAround" ng-class-odd="'odd'" ng-class-even="'even'">
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{reimbursed.merchant}}</p>
+
+            </div>
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{reimbursed.expenseAmt | number: 2}}</p>
+
+            </div>
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{reimbursed.expenseDate | date }}</p>
+
+            </div>
+
+            <div class="content u-flex u-flexJustifyCenter u-flexGrow1">
+
+                <p>{{reimbursed.comments}}</p>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>

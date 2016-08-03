@@ -1,0 +1,183 @@
+/* global styling */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #f5f5f5;
+    font-family: "Playfair Display", serif;
+
+}
+
+input[type="submit"] {
+    cursor: pointer;
+    background-color: #a9b7c0;
+    border: none;
+    border-radius: 6px;
+    color: #f5f5f5;
+    font-size: 1.5em;
+    padding: 20px;
+    transition: all 0.3s ease 0s;
+}
+
+input[type="submit"]:hover {
+    box-shadow: inset 0 0 0 1px #27496d, 0 5px 15px #193047;
+    background-color: #909EA7;
+    transition: all 0.3s ease 0s;
+}
+
+input[type="submit"]:active {
+    box-shadow: inset 0 0 0 1px #27496d, inset 0 5px 30px #193047;
+}
+
+select {
+    cursor: pointer;
+    background-color: #DCDCDC;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.5em;
+    padding: 20px;
+    width: 60%;
+    transition: all 0.3s ease 0s;
+}
+
+/* logo animation */
+
+.logo {
+    background-image: linear-gradient(rgba(84, 110, 122, 0.70),
+    rgba(84, 110, 122, 0.70)),
+    url('http://s.hswstatic.com/gif/money-world-orig.jpg');
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.logo {
+    background-repeat: repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font: 8em Helvetica Neue;
+    transition: background-position 1s;
+}
+
+.logo:hover {
+    background-position: 100% 100%;
+}
+
+/* login styling */
+
+#login {
+    background-color: #f5f5f5;
+    width: 100%;
+    min-height: 100vh;
+    overflow: auto;
+    text-align: center;
+    padding-top: 200px;
+}
+
+#login h3 {
+    font-style: italic;
+}
+
+.formStyle {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.formStyle input, textarea {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 7px;
+    border: none;
+    width: 85%;
+    background-color: #DCDCDC;
+}
+
+.formStyle form {
+    margin: 0 auto;
+    width: 80%;
+    /*padding:30px;*/
+}
+
+.form-wrap {
+    background-color: #f5f5f5;
+    /*margin-top: 100px;*/
+
+}
+
+.formStyle h2 {
+    background-color: #f5f5f5;
+    -webkit-border-radius: 20px 20px 0 0;
+    -moz-border-radius: 20px 20px 0 0;
+    border-radius: 20px 20px 0 0;
+    color: #0f1626;
+    font-size: 3em;
+    padding: 20px 26px;
+}
+
+.formStyle span {
+    font-size: 1.6em;
+    font-color: #0f1626;
+}
+
+.formStyle input[type="submit"] {
+    background-color: #a9b7c0;
+}
+
+.formStyle input[type="submit"]:hover {
+    background-color: #909EA7;
+}
+
+/* styling for main page */
+
+.expenseNav input {
+    width: calc(60% / 4);
+}
+
+.mainContainer {
+    margin: 5%;
+    width: 90%;
+    padding: 2%;
+    border: solid #ab987a 0.5px;
+    border-radius: 15px 3px 15px;
+    box-shadow: inset 0 0 15px #0f1626;
+    background: #f5f5f9;
+}
+
+.mainContainer h5 {
+    font-size: 1.2em;
+    font-color: #0f1626;
+}
+
+.expenseLabels {
+    margin-bottom: 10px;
+}
+
+.expenseSection {
+    width: 100%;
+}
+
+.odd {
+    background-color: lightblue;
+    margin-bottom: 3px;
+    border-radius: 3px;
+}
+
+.even {
+    background-color: lightgray;
+    margin-bottom: 3px;
+    border-radius: 3px;
+}
+
+.content p {
+    font-size: 1.2em;
+}
+
+
+
+
