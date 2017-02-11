@@ -29,21 +29,21 @@ angular.module('XPNS')
             $scope.editFields = true;
             $scope.reimburseFields = false;
             $scope.removeFields = false;
-        }
+        };
 
         $scope.showReimburseForm = function () {
             $scope.addFormModal = false;
             $scope.editFields = false;
             $scope.reimburseFields = true;
             $scope.removeFields = false;
-        }
+        };
 
         $scope.showDeleteForm = function () {
             $scope.addFormModal = false;
             $scope.editFields = false;
             $scope.reimburseFields = false;
             $scope.removeFields = true;
-        }
+        };
 
 
         // ADDING NEW EXPENSES FUNCTION
